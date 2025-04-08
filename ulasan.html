@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MR DIY KOTALAMA (XPTN)</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #fff8e1;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #ffd600;
+        padding: 1rem;
+        text-align: center;
+      }
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #212121;
+      }
+      main {
+        padding: 1rem;
+      }
+      .checkbox-group {
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      textarea {
+        width: 100%;
+        height: 120px;
+        margin-top: 1rem;
+      }
+      button {
+        background-color: #fbc02d;
+        color: #212121;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+      .popup {
+        display: none;
+        background-color: #c8e6c9;
+        padding: 10px;
+        color: #2e7d32;
+        border-radius: 5px;
+        margin-top: 1rem;
+        text-align: center;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.8rem;
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>MR DIY KOTALAMA (XPTN)</h1>
+    </header>
+    <main>
+      <p>Pilih pengalaman berbelanja kamu di toko kami:</p>
+      <div class="checkbox-group">
+        <label
+          ><input type="checkbox" value="Lokasinya strategis dekat wisata" />
+          Lokasi strategis dekat wisata</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            value="Pelayanan staff sangat ramah dan membantu"
+          />
+          Pelayanan ramah & membantu</label
+        >
+        <label
+          ><input type="checkbox" value="Toko bersih, rapi, dan nyaman" /> Toko
+          bersih dan rapi</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            value="Free balon kuning & silver yang lucu!"
+          />
+          Free balon kuning & silver!</label
+        >
+        <label
+          ><input
+            type="checkbox"
+            value="Banyak pilihan produk & harga selalu terjangkau"
+          />
+          Banyak produk & harga murah</label
+        >
+        <label
+          ><input type="checkbox" value="Tukang parkir ramah dan sigap" />
+          Tukang parkir ramah</label
+        >
+      </div>
+
+      <button onclick="generateReview()">Buat Ulasan</button>
+      <textarea
+        id="reviewOutput"
+        placeholder="Ulasanmu akan muncul di sini..."
+      ></textarea>
+      <br />
+      <button onclick="copyReview()">Salin Ulasan</button>
+      <div class="popup" id="popupNotif">✅ Ulasan berhasil disalin!</div>
+      <br /><br />
+      <a href="https://maps.app.goo.gl/iGovznQKjAKDNdJi8" target="_blank">
+        <button>Kunjungi Google Maps Toko</button>
+      </a>
+    </main>
+    <footer>Create by Team XPTN V.1.0</footer>
+
+    <script>
+      const endings = [
+        "Ayo mampir dan rasakan sendiri pengalaman belanjanya!",
+        "Wajib banget dicoba, dijamin puas!",
+        "Toko ini layak jadi tujuan belanja favorit kamu!",
+        "Seru, hemat, dan bikin betah!",
+        "Beneran deh, tempat belanja terbaik di sekitar sini!",
+      ];
+
+      function generateReview() {
+        const checkboxes = document.querySelectorAll(
+          'input[type="checkbox"]:checked'
+        );
+        const values = Array.from(checkboxes).map((cb) => cb.value);
+        const ending = endings[Math.floor(Math.random() * endings.length)];
+        const result = values.join(", ") + ".\n" + ending;
+        document.getElementById("reviewOutput").value = result;
+      }
+
+      function copyReview() {
+        const output = document.getElementById("reviewOutput");
+        output.select();
+        output.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(output.value);
+        const popup = document.getElementById("popupNotif");
+        popup.style.display = "block";
+        setTimeout(() => (popup.style.display = "none"), 2500);
+      }
+    </script>
+  </body>
+</html>
