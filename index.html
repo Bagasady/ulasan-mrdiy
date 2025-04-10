@@ -3,151 +3,312 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MR DIY KOTALAMA (XPTN)</title>
+    <title>Ulasan Pelanggan - MR.DIY</title>
+    <link rel="icon" href="assets/jawara.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: #fff8e1;
-        color: #333;
-        margin: 0;
-        padding: 0;
+      @keyframes pulse-slow {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.8;
+        }
       }
-      header {
-        background-color: #ffd600;
-        padding: 1rem;
-        text-align: center;
-      }
-      h1 {
-        margin: 0;
-        font-size: 1.5rem;
-        color: #212121;
-      }
-      main {
-        padding: 1rem;
-      }
-      .checkbox-group {
-        margin-bottom: 1rem;
-      }
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-      textarea {
-        width: 100%;
-        height: 120px;
-        margin-top: 1rem;
-      }
-      button {
-        background-color: #fbc02d;
-        color: #212121;
-        padding: 0.6rem 1rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 1rem;
-      }
-      .popup {
-        display: none;
-        background-color: #c8e6c9;
-        padding: 10px;
-        color: #2e7d32;
-        border-radius: 5px;
-        margin-top: 1rem;
-        text-align: center;
-      }
-      footer {
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.8rem;
-        color: #999;
+      .pulse-slow {
+        animation: pulse-slow 2s infinite ease-in-out;
       }
     </style>
   </head>
-  <body>
-    <header>
-      <h1>MR DIY KOTALAMA (XPTN)</h1>
-    </header>
-    <main>
-      <p>Pilih pengalaman berbelanja kamu di toko kami:</p>
-      <div class="checkbox-group">
-        <label
-          ><input type="checkbox" value="Lokasinya strategis dekat wisata" />
-          Lokasi strategis dekat wisata</label
-        >
-        <label
-          ><input
-            type="checkbox"
-            value="Pelayanan staff sangat ramah dan membantu"
-          />
-          Pelayanan ramah & membantu</label
-        >
-        <label
-          ><input type="checkbox" value="Toko bersih, rapi, dan nyaman" /> Toko
-          bersih dan rapi</label
-        >
-        <label
-          ><input
-            type="checkbox"
-            value="Free balon kuning & silver yang lucu!"
-          />
-          Free balon kuning & silver!</label
-        >
-        <label
-          ><input
-            type="checkbox"
-            value="Banyak pilihan produk & harga selalu terjangkau"
-          />
-          Banyak produk & harga murah</label
-        >
-        <label
-          ><input type="checkbox" value="Tukang parkir ramah dan sigap" />
-          Tukang parkir ramah</label
-        >
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-yellow-400 shadow fixed top-0 left-0 right-0 z-50">
+      <div class="w-full px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <img src="assets/logo diy.png" alt="MR.DIY Logo" class="h-10" />
+          <span class="text-xl font-bold text-gray-800">MR.DIY - Jawara</span>
+        </div>
       </div>
+    </nav>
 
-      <button onclick="generateReview()">Buat Ulasan</button>
-      <textarea
-        id="reviewOutput"
-        placeholder="Ulasanmu akan muncul di sini..."
-      ></textarea>
-      <br />
-      <button onclick="copyReview()">Salin Ulasan</button>
-      <div class="popup" id="popupNotif">✅ Ulasan berhasil disalin!</div>
-      <br /><br />
-      <a href="https://maps.app.goo.gl/iGovznQKjAKDNdJi8" target="_blank">
-        <button>Kunjungi Google Maps Toko</button>
-      </a>
+    <div class="h-20"></div>
+
+    <!-- Notifikasi -->
+    <div
+      class="bg-green-100 text-green-800 px-4 py-2 text-center animate-pulse"
+    >
+      🎉 30 ulasan minggu ini! Tambahkan ulasanmu sekarang!
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-8 text-center shadow">
+      <h1 class="text-2xl font-bold">
+        Bantu kami jadi lebih baik dengan ulasanmu!
+      </h1>
+      <p class="mt-2 text-gray-600">
+        Isi form ulasan dan dukung toko favoritmu agar makin berkembang!
+      </p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
+      <!-- Kolom utama -->
+      <section class="lg:col-span-2 space-y-6">
+        <!-- Highlight Ulasan -->
+        <div class="bg-white p-4 rounded-xl shadow animate-bounce">
+          <h2 class="text-xl font-bold mb-2">Highlight Ulasan Minggu Ini</h2>
+          <div class="bg-yellow-100 rounded p-4 text-center">
+            ⭐⭐⭐⭐⭐ "Ubur-Ubur Ikan Lele, Ayo! Bikin Ulasan Lee"
+          </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h2 class="text-xl font-bold mb-2">Leaderboard Ulasan</h2>
+          <p class="text-sm text-gray-500 mb-4">
+            Ulasan terpilih akan mendapatkan katalog via WhatsApp
+          </p>
+          <div class="space-y-4">
+            <div
+              class="bg-yellow-100 border-l-4 border-yellow-400 p-4 rounded-xl shadow-md animate-pulse"
+            >
+              <h3 class="font-bold text-lg">#1 Bagasdy - Semarang</h3>
+              <p class="mt-1 text-gray-700 italic">
+                "Ubur ubur ikan lele, ayo beri ulasan lee"
+              </p>
+            </div>
+            <div class="bg-white p-4 rounded-xl shadow animate-bounce">
+              <h3 class="font-semibold text-gray-500">#2 Coming Soon</h3>
+            </div>
+            <div
+              class="bg-white p-4 rounded-xl shadow animate-bounce delay-200"
+            >
+              <h3 class="font-semibold text-gray-500">#3 Coming Soon</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Ulasan -->
+        <div class="bg-white p-4 rounded-xl shadow">
+          <h2 class="text-xl font-bold mb-2">Form Ulasan</h2>
+          <p class="text-sm text-gray-500 mb-4">
+            Pilih penilaian dan lihat hasil ulasan otomatis.
+          </p>
+          <form
+            onsubmit="event.preventDefault(); generateReview();"
+            class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left text-gray-800"
+          >
+            <!-- Checkbox -->
+            <label class="form-check">
+              <input
+                type="checkbox"
+                name="review"
+                value="Lokasinya strategis"
+              />
+              Lokasinya strategis
+            </label>
+            <label class="form-check">
+              <input type="checkbox" name="review" value="Pelayanannya ramah" />
+              Pelayanannya ramah
+            </label>
+            <label class="form-check">
+              <input
+                type="checkbox"
+                name="review"
+                value="Toko rapi dan bersih"
+              />
+              Toko rapi dan bersih
+            </label>
+            <label class="form-check">
+              <input
+                type="checkbox"
+                name="review"
+                value="Produk sangat lengkap"
+              />
+              Produk sangat lengkap
+            </label>
+            <label class="form-check">
+              <input
+                type="checkbox"
+                name="review"
+                value="Harganya sangat terjangkau"
+              />
+              Harganya sangat terjangkau
+            </label>
+            <label class="form-check">
+              <input
+                type="checkbox"
+                name="review"
+                value="Tukang parkirnya ramah"
+              />
+              Tukang parkirnya ramah
+            </label>
+
+            <!-- Tambahan -->
+            <div class="sm:col-span-2">
+              <label class="block font-semibold mt-4 mb-1"
+                >Tulis tambahan (opsional):</label
+              >
+              <textarea
+                id="customReview"
+                rows="3"
+                class="w-full p-2 border rounded"
+                placeholder="Contoh: Anak saya senang dapat balon, terima kasih!"
+              ></textarea>
+            </div>
+
+            <!-- Tombol -->
+            <div class="sm:col-span-2">
+              <button type="submit" class="btn-primary mt-2">
+                Buat Ulasan & Buka Google Maps
+              </button>
+            </div>
+
+            <!-- Output -->
+            <div class="sm:col-span-2 mt-4">
+              <label class="block font-semibold mb-1"
+                >Hasil Ulasan Otomatis:</label
+              >
+              <textarea
+                id="reviewOutput"
+                rows="3"
+                class="w-full p-2 border rounded bg-gray-100"
+                readonly
+              ></textarea>
+              <p class="text-xs text-gray-500 mt-1">
+                * Ulasan otomatis sudah disalin ke clipboard.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <!-- Promo Subscription (disabled) -->
+        <div class="relative bg-white p-4 rounded-xl shadow-md">
+          <div
+            class="absolute inset-0 bg-white/70 backdrop-blur-sm rounded-xl z-10 flex flex-col items-center justify-center"
+          >
+            <div class="text-4xl text-yellow-500 mb-2">🔒</div>
+            <p class="text-sm text-gray-600 font-medium">
+              Fitur akan segera tersedia
+            </p>
+          </div>
+          <h3 class="text-lg font-bold mb-3 text-gray-800">
+            Berlangganan Promo
+          </h3>
+          <input
+            type="text"
+            placeholder="Nama"
+            class="w-full mb-2 p-2 border rounded-md"
+            disabled
+          />
+          <input
+            type="text"
+            placeholder="Tempat Tinggal"
+            class="w-full mb-2 p-2 border rounded-md"
+            disabled
+          />
+          <input
+            type="text"
+            placeholder="Nomor WhatsApp"
+            class="w-full mb-3 p-2 border rounded-md"
+            disabled
+          />
+          <button
+            class="w-full bg-yellow-400 text-black font-semibold py-2 rounded-md"
+            disabled
+          >
+            Daftar Promo
+          </button>
+        </div>
+      </aside>
     </main>
-    <footer>Create by Team XPTN V.1.0</footer>
 
-    <script>
-      const endings = [
-        "Ayo mampir dan rasakan sendiri pengalaman belanjanya!",
-        "Wajib banget dicoba, dijamin puas!",
-        "Toko ini layak jadi tujuan belanja favorit kamu!",
-        "Seru, hemat, dan bikin betah!",
-        "Beneran deh, tempat belanja terbaik di sekitar sini!",
-      ];
+    <!-- Floating Buttons -->
+    <div
+      id="floatingButtons"
+      class="fixed bottom-6 right-6 flex flex-col items-end gap-3 z-50"
+    >
+      <a
+        href="coming-soon.html"
+        class="bg-yellow-400 text-black rounded-full p-3 shadow-md hover:scale-110 transition"
+        title="Lihat Katalog"
+        >📦</a
+      >
+      <a
+        href="https://maps.app.goo.gl/CjMDLNDxJdJs32ep9"
+        target="_blank"
+        class="bg-yellow-400 text-black rounded-full p-3 shadow-md hover:scale-110 transition"
+        title="Google Maps"
+        >📍</a
+      >
+      <a
+        href="#"
+        class="bg-yellow-400 text-black rounded-full p-3 shadow-md hover:cursor-not-allowed opacity-60 relative group"
+        title="Fitur Segera Tersedia"
+      >
+        💬
+        <div
+          class="absolute -top-10 right-1/2 translate-x-1/2 hidden group-hover:block bg-black text-white text-xs px-2 py-1 rounded"
+        >
+          Segera hadir
+        </div>
+      </a>
+    </div>
 
-      function generateReview() {
-        const checkboxes = document.querySelectorAll(
-          'input[type="checkbox"]:checked'
-        );
-        const values = Array.from(checkboxes).map((cb) => cb.value);
-        const ending = endings[Math.floor(Math.random() * endings.length)];
-        const result = values.join(", ") + ".\n" + ending;
-        document.getElementById("reviewOutput").value = result;
+    <!-- Footer -->
+    <footer class="bg-white mt-10 p-6 shadow-inner">
+      <div class="max-w-6xl mx-auto text-center text-sm text-gray-500">
+        <p>
+          <strong>MR.DIY Kota Lama</strong> | Jl. Agus Salim, Purwodinatan | 🕒
+          Buka pukul 10.00 - 22.00 WIB
+          <span id="statusToko" class="ml-2 font-semibold"></span>
+        </p>
+        <p>&copy; 2025 MR.DIY | Create By Team XPTN V.1.2</p>
+      </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="js/script.js"></script>
+
+    <!-- Utility Styles -->
+    <style>
+      .form-check {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background-color: #fef9c3;
+        border: 1px solid #fcd34d;
+        padding: 0.75rem;
+        border-radius: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
       }
-
-      function copyReview() {
-        const output = document.getElementById("reviewOutput");
-        output.select();
-        output.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(output.value);
-        const popup = document.getElementById("popupNotif");
-        popup.style.display = "block";
-        setTimeout(() => (popup.style.display = "none"), 2500);
+      .form-check:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
-    </script>
+      .form-check input {
+        transform: scale(1.25);
+        accent-color: #facc15;
+      }
+      .btn-primary {
+        background-color: #facc15;
+        color: black;
+        font-weight: 600;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s ease;
+      }
+      .btn-primary:hover {
+        background-color: #fde68a;
+      }
+    </style>
   </body>
 </html>
